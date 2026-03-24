@@ -1,20 +1,27 @@
 import './App.css'
 import { useState } from 'react'
 
-function Greeting({name,age}) {
-  return <h1>Hello, I am {name},i am {age} years old!</h1>
+function TodoList() {
+  const todos = [
+    { id: 1, text: "Learn JSX"},
+    { id: 2, text: "Understand props"},
+    { id: 3, text: "Master state & events"}
+  ];
+  return (
+    <div>
+      <h1>My React Todos</h1>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 function App() {
-  const [showGreeting, setShowGreeting] = useState(true);
-  function toggleGreeting() {
-    setShowGreeting(!showGreeting);
-  }
   return (
-    <div>
-      <button onClick={toggleGreeting}>Toggle Greeting</button>
-      {showGreeting && <Greeting name="Alice" age={30} />}
-    </div>
+    <TodoList />
   )
 }
 
